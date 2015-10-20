@@ -1,17 +1,17 @@
 ary = Array.new(100){ Random.rand(100) }
 
 def quickSort(array)
-	return array if array.size <= 1
+	return array if array.size <= 1 # 配列の大きさが0か1なら配列をそのまま返す
 
-	pvt = array[0]
+	pivot = array[0]
 	arr_l = Array.new
 	arr_r = Array.new
 
 	for i in 1...array.size do
-		(array[i] > pvt ? arr_r : arr_l).push(array[i])
+		(array[i] > pivot ? arr_r : arr_l).push(array[i]) # 軸より大きければarr_rそうでなければarr_lに要素を追加
 	end
 
-	return quickSort(arr_l) + [pvt] + quickSort(arr_r)
+	return quickSort(arr_l) + [pivot] + quickSort(arr_r) # 軸より小さいもののソート + 軸 + 軸より大きいもののソート(再帰)
 end
 
 puts quickSort(ary)
