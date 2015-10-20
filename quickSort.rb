@@ -11,10 +11,7 @@ def quickSort(array)
 		(array[i] > pvt ? arr_r : arr_l).push(array[i])
 	end
 
-	arr_r = quickSort(arr_r)
-	arr_l = quickSort(arr_l)
-
-	return arr_l + [pvt] + arr_r
+	return quickSort(arr_l) + [pvt] + quickSort(arr_r)
 end
 
 puts quickSort(ary)
